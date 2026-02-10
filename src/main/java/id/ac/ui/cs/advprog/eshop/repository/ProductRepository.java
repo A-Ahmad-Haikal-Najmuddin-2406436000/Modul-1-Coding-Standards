@@ -31,8 +31,12 @@ public class ProductRepository {
         return null;
     }
 
-        public Product findById(UUID id) {
+    public Product findById(UUID id) {
         return productData.stream().filter(p -> p.getProductid().equals(id)).findFirst().orElse(null);
+    }
+
+    public void delete(UUID id) {
+        productData.removeIf(p -> p.getProductid().equals(id));
     }
 
     public Iterator<Product> findAll() {
