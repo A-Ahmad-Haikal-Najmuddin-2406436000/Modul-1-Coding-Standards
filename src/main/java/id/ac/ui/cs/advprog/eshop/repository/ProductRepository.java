@@ -13,15 +13,15 @@ public class ProductRepository {
     private List<Product> productData = new ArrayList<>();
 
     public Product create(Product product) {
-        if (product.getProductid() == null) {
-            product.setProductid(UUID.randomUUID());
+        if (product.getProductId() == null) {
+            product.setProductId(UUID.randomUUID());
         }
         productData.add(product);
         return product;
     }
 
     public Product edit(Product product) {
-        Product existingProduct = findById(product.getProductid());
+        Product existingProduct = findById(product.getProductId());
 
         if (existingProduct != null) {
             existingProduct.setProductName(product.getProductName());
@@ -32,11 +32,11 @@ public class ProductRepository {
     }
 
     public Product findById(UUID id) {
-        return productData.stream().filter(p -> p.getProductid().equals(id)).findFirst().orElse(null);
+        return productData.stream().filter(p -> p.getProductId().equals(id)).findFirst().orElse(null);
     }
 
     public void delete(UUID id) {
-        productData.removeIf(p -> p.getProductid().equals(id));
+        productData.removeIf(p -> p.getProductId().equals(id));
     }
 
     public Iterator<Product> findAll() {
