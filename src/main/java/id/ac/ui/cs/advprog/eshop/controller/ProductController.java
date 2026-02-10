@@ -20,6 +20,11 @@ public class ProductController {
     @Autowired
     private ProductRepository productRepository;
 
+    @GetMapping("/")
+    public String index() {
+        return "redirect:list";
+    }
+
     @GetMapping("/create")
     public String createProductPage(Model model) {
         Product product = new Product();
@@ -35,7 +40,7 @@ public class ProductController {
 
     @GetMapping("/edit/{id}")
     public String editProductPage(@PathVariable("id") UUID id, Model model) {
-        Product product = productRepository.findById(id);
+        Product product = service.findById(id);
         model.addAttribute("product", product);
         return "editProduct";
     }
