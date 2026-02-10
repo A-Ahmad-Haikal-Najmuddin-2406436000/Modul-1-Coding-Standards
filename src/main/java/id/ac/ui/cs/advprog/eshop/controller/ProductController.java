@@ -22,7 +22,7 @@ public class ProductController {
 
     @GetMapping("/")
     public String index() {
-        return "redirect:list";
+        return "redirect:/product/list";
     }
 
     @GetMapping("/create")
