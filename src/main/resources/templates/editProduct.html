@@ -17,11 +17,13 @@
         <div class="form-group">
             <label for="nameInput">Product Name</label>
             <input th:field="*{productName}" type="text" class="form-control mb-4 col-4" id="nameInput" placeholder="Enter product name">
+            <p th:if="${#fields.hasErrors('productName')}" th:errors="*{productName}" class="text-danger"></p>
         </div>
 
         <div class="form-group">
             <label for="quantityInput">Quantity</label>
             <input th:field="*{productQuantity}" type="number" class="form-control mb-4 col-4" id="quantityInput" placeholder="Enter quantity">
+            <p th:if="${#fields.hasErrors('productQuantity')}" th:errors="*{productQuantity}" class="text-danger"></p>
         </div>
 
         <button type="submit" class="btn btn-primary">Save Changes</button>

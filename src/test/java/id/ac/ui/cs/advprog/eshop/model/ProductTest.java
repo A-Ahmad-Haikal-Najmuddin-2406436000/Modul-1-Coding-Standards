@@ -24,12 +24,27 @@ class ProductTest {
     }
 
     @Test
+    void testGetProductIdFail() { assertNotEquals(UUID.fromString("eb558e9f-1c39-460e-8860-71af6af63bd8"), this.product.getProductId());
+    }
+
+    @Test
     void testGetProductName() {
         assertEquals("Sampo Cap Bambang", this.product.getProductName());
+    }
+
+    @Test
+    void testGetProductNameFail() {
+        assertNotEquals("Kecap Cap Elang", this.product.getProductName());
     }
 
     @Test
     void testGetProductQuantity() {
         assertEquals(100, this.product.getProductQuantity());
     }
+
+    @Test
+    void testGetProductQuantityFail() {
+        assertNotEquals(24, this.product.getProductQuantity());
+    }
+
 }
