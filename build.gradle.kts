@@ -33,7 +33,7 @@ repositories {
 
 sonar {
     properties {
-        property("sonar.projectKey", "A-Ahmad Haikal Najmuddin-2406436000_Modul-1-Coding-Standards")
+        property("sonar.projectKey", "A-Ahmad-Haikal-Najmuddin-2406436000_Modul-1-Coding-Standards")
         property("sonar.organization", "a-ahmad-haikal-najmuddin-2406436000")
         property("sonar.host.url", "https://sonarcloud.io")
     }
