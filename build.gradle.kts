@@ -36,6 +36,7 @@ sonar {
         property("sonar.projectKey", "A-Ahmad-Haikal-Najmuddin-2406436000_Modul-1-Coding-Standards")
         property("sonar.organization", "a-ahmad-haikal-najmuddin-2406436000")
         property("sonar.host.url", "https://sonarcloud.io")
+        property("sonar.coverage.jacoco.xmlReportPaths", "build/reports/jacoco/test/jacocoTestReport.xml")
     }
 }
 
@@ -56,6 +57,7 @@ dependencies {
     testImplementation("io.github.bonigarcia:webdrivermanager:$webdrivermanagerVersion")
     testImplementation("org.junit.jupiter:junit-jupiter:$junitJupiterVersion")
 }
+
 
 tasks.register<Test>("unitTest") {
     description = "Runs unit tests."
