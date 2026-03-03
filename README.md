@@ -22,3 +22,16 @@ Dalam kode saya, saya telah mengimplementasikan fitur-fitur seperti create, edit
    Remove the declaration of thrown exception 'java.lang.Exception', as it cannot be thrown from method's body.", "Remove this unused import 'java.util.List'.
    ", "Rename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.", dan "Group dependencies by their destination". Cara saya menyelesaikan masalah-masalah tersebut adalah menghapus throw exception di bagian unittest, menghapus import yang tidak terpakai, menamai ulang method supaya sesuai Java naming convention, dan mengurutkan depedencies sesuai destinasinya.
 2. Dari script CI pada .github/workflows, dan settings _Automatic Deploys_ pada Heroku dapat disimpulkan bahwa implementasi CI-CD di kode ini sudah memenuhinya. Selain itu, CI yang melakukan _unit-testing_ pada kode  dan _code scanning_ dengan beberapa tools, seperti OSSF Scorecard bawaan Github, dan tools dari luar, yaitu SonarCloud. Kemudian, setelah CI selesai dan berhasil melewati _code scanning_, Heroku akan melakukan auto deployment, ataupun re-deployment, pada branch Master/Main yang memenuhi CI tersebut.
+
+
+- Refleksi Modul 3:
+
+1. Nomor 1: \
+  a) SRP diimplementasikan lewat pemisahan CarController dengan ProductController yang dipisahkan menjadi 2 file.\
+  b) OCP diimplementasikan dengan membuat Interface general untuk ProductRepository dan CarRepository, yaitu BaseRepository, hal tersebut karena keduanya memiliki kode dan method yang mirip jadi bisa dibuat BaseReponya. Selain itu, saat ingin menambahkan kode baru tidak perlu memodifikasi file yang sudah ada.\
+  c) LSP diimplementasikan dengan membuat CarController tidak lagi meng-_extends_ ProductController, karen keduanya berurusan dengan model yang berbeda, dan memiliki mapping yang berbeda.\
+  d) ISP diimplementasikan melalui Service yang dipisahkan menjadi ReadService dan WriteService, hal tersebut dilakukan supaya class-classnya menjadi lebih spesifik sesuai fungsinya.\
+  e) DIP diimplementasikan lewat CarController dan ProductController bergantung pada CarService dan ProductService yang mana keduanya bergantung pada interface atau abstraksi, bukan pada class konkrit.
+
+2. Dengan mengimplementasikan SOLID, kode yang saya buat lebih mudah untuk di-_maintain_ dan dikembangkan dikemudan hari. Selain itu, penambahan kode baru tidak akan merusak kode yang sudah ada sebelumnya, dan fungsi yang sudah ada tidak akan membingungkan. Contohnya: implementasi CarProduct dan ProductController yang memiliki tanggung jawab masing-masing sehingga lebih mudah dibaca, di-test, dan di-_maintain_.
+3. Kerugian jika tidak mengimplementasikan SOLID, yaitu kode menjadi sulit di-_maintain_ dan membingungkan, contohnya ProductController yang tadinya mengurus 2 hal. Selain itu, konsistensi kode yang membuat kode seperti tidak ada standar, contohnya sebelum diimplementasikan SOLID, kedua memiliki CarRepository dan ProductRepository yang berbeda. 
