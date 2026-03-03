@@ -7,5 +7,5 @@ public class Car {
     private String carId;
     private String carName;
     private String carColor;
-    private int carQuality;
+    private int carQuantity;
 }
